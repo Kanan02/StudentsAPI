@@ -5,6 +5,7 @@ using MvcJsonOptions = Microsoft.AspNetCore.Mvc.JsonOptions;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using DataAccess.Repositoies.StudentRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +33,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddScoped<IStudentRepository,StudentRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
