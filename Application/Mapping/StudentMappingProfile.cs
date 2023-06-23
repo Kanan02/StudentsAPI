@@ -1,4 +1,5 @@
-﻿using Application.Queries.StudentQueries;
+﻿using Application.Commands.StudentCommands.CreateStudent;
+using Application.Queries.StudentQueries;
 using AutoMapper;
 using Domain.Entities;
 namespace Application.Mapping
@@ -7,7 +8,7 @@ namespace Application.Mapping
     {
         public StudentMappingProfile()
         {
-          //  CreateMap<CreateStudentRequest, Student>();
+            CreateMap<CreateStudentRequest, Student>();
             CreateMap<Student, StudentResponse>();
         }
     }

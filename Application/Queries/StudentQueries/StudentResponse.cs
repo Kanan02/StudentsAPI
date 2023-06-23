@@ -5,7 +5,7 @@ namespace Application.Queries.StudentQueries
 {
     public class StudentResponse
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; }
         
         public string FullName { get; set; } = "";
         
