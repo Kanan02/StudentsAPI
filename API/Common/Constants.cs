@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string ApiTemplate = "api/[controller]";
+        public const string ApiTemplate = "api/[controller]s";
     }
 }

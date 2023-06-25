@@ -12,6 +12,7 @@ using Application.Validators.StudentValidators;
 using Application.Commands.StudentCommands.CreateStudent;
 using Application.Commands.StudentCommands.UpdateStudent;
 using AutoWrapper;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,7 @@ builder.Services.AddScoped<IUnitOfWork,UnitOfWork>();
 builder.Services.AddScoped<IStudentRepository,StudentRepository>();
 
 var app = builder.Build();
-app.UseApiResponseAndExceptionWrapper();
+app.UseApiResponseAndExceptionWrapper(new AutoWrapperOptions { ShowIsErrorFlagForSuccessfulResponse = true });
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -52,7 +53,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors(builder =>
+{
+    builder
+        .AllowAnyHeader()
+        .AllowAnyMethod()
+        .AllowAnyOrigin();
+});
 app.UseAuthorization();
 
 app.MapControllers();

@@ -6,9 +6,6 @@ namespace Domain.Entities
 {
     public class Student: Entity
     {
-        [Key]
-        [Required]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
         [Required]
         [StringLength(StringLengthConstants.LengthLg)]
         public string FullName { get; set; } = "";

@@ -13,8 +13,7 @@ namespace Application.Validators.StudentValidators
 
             RuleFor(student => student.Average).NotNull().InclusiveBetween(0, 20).WithMessage("The average grade shoulde be between 0 and 20 inclusively");
 
-            RuleFor(student => student.DateOfBirth).NotNull().NotEmpty().LessThanOrEqualTo(DateTime.Now.Subtract(TimeSpan.FromDays(365 * 6)))
-                .WithMessage($"The date cannot be higher than {DateTime.Now.Subtract(TimeSpan.FromDays(365 * 6))}");
+            RuleFor(student => student.DateOfBirth).NotNull().NotEmpty();
         }
     }
 }

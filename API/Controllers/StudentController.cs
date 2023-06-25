@@ -3,6 +3,7 @@ using Application.Commands.StudentCommands.DeleteStudent;
 using Application.Commands.StudentCommands.UpdateStudent;
 using Application.Queries.StudentQueries;
 using Application.Queries.StudentQueries.GetAllStudents;
+using Application.Queries.StudentQueries.GetStudentById;
 using AutoWrapper.Extensions;
 using AutoWrapper.Wrappers;
 using Core.Models;
@@ -21,6 +22,15 @@ namespace API.Controllers
                 PagingParameters = pagingParameters
             }));
 
+            return new ApiResponse(result);
+        }
+        [HttpGet("{id}")]
+        public async Task<ApiResponse> GetByIdAsync( string id)
+        {
+            var result = await Mediator.Send(new GetStudentByIdQuery(new GetStudentByIdRequest()
+            {
+                Id=id
+            }));
             return new ApiResponse(result);
         }
         [HttpPost]

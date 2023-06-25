@@ -34,7 +34,7 @@ namespace Application.Queries.StudentQueries.GetAllStudents
 
                 filterPredicate = c =>
                     (!isIdsExist || filterParameters.Ids.Contains(c.Id)) &&
-                     (!isNameExist || c.FullName == filterParameters.FullName);
+                     (!isNameExist || c.FullName.Contains( filterParameters.FullName));
             }
 
             var data = _studentRepository.FindBy(filterPredicate);
