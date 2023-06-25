@@ -6,3 +6,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "8080:80"
+  angular:
+    image: ${DOCKER_REGISTRY-}angular
+    build:
+      context: ./StudentCRUDFront
+      dockerfile: ./Dockerfile
+    ports:
+      - "4200:4200"
